@@ -39,7 +39,7 @@ Every CTA is repointed at runtime from one constant near the bottom of `index.ht
 (and a matching one in `404.html`):
 
 ```js
-var DEMO_URL = "https://demo.dasecure.com";
+var DEMO_URL = "https://demo.passqr.com";
 ```
 
 Change those two lines and every button follows — including if the demo grows a
@@ -47,7 +47,7 @@ vertical query param (`?v=pilates`). The `href` attributes in the markup carry t
 same URL, so links still work with JavaScript disabled.
 
 Not covered by the constant: the QR in the dark band is a real, scannable QR
-encoding `https://demo.dasecure.com`, drawn as an inline SVG path. Regenerate it if
+encoding `https://demo.passqr.com`, drawn as an inline SVG path. Regenerate it if
 the demo URL ever changes.
 
 ## Prices
