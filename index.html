@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PassQR Loyalty — wallet stamp cards for cafés, salons, gyms, studios and market stalls</title>
+<meta name="description" content="Put your loyalty card in Apple Wallet and Google Wallet. Customers add it by scanning a QR on your counter — no app, no signup, no email. Staff scan to stamp; the card updates on their lock screen.">
+<link rel="canonical" href="https://loyalty.passqr.com/">
+<meta name="theme-color" content="#1A1310">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://loyalty.passqr.com/">
+<meta property="og:site_name" content="PassQR Loyalty">
+<meta property="og:title" content="The stamp card that's already in their phone">
+<meta property="og:description" content="Wallet loyalty cards for cafés, salons, gyms, pilates studios and market stalls. No app. No signup. Scan to stamp.">
+<meta property="og:image" content="https://loyalty.passqr.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The stamp card that's already in their phone">
+<meta name="twitter:description" content="Wallet loyalty cards for cafés, salons, gyms, pilates studios and market stalls. No app. No signup. Scan to stamp.">
+<meta name="twitter:image" content="https://loyalty.passqr.com/og.png">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#1A1310;
+  --ink-soft:#3C302A;
+  --muted:#6E605A;
+  --paper:#FBF7F2;
+  --card:#FFFFFF;
+  --line:#E7DED2;
+  --espresso:#3B2416;
+  --amber:#D2802B;
+  --amber-soft:#F6E6D3;
+  --teal:#0E7C6B;
+  --teal-soft:#DCEFEA;
+  --radius:16px;
+  --maxw:1120px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,"Times New Roman",serif;font-weight:600;line-height:1.12;letter-spacing:-.015em;margin:0}
+h1{font-size:clamp(2.3rem,6vw,4.1rem)}
+h2{font-size:clamp(1.8rem,4vw,2.85rem)}
+h3{font-size:1.16rem;line-height:1.3;font-weight:600}
+p{margin:0}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:20px}
+section{padding-block:clamp(56px,8vw,104px)}
+.eyebrow{
+  font-size:.76rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:14px;
+}
+.lede{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--ink-soft);max-width:60ch}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.55em;
+  padding:14px 24px;border-radius:999px;
+  font-weight:600;font-size:1rem;text-decoration:none;
+  border:1.5px solid transparent;transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--espresso);color:#FFF6EA;box-shadow:0 6px 0 -1px rgba(26,19,16,.18)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px -8px rgba(26,19,16,.5)}
+.btn-ghost{border-color:var(--line);background:var(--card);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--espresso);transform:translateY(-2px)}
+.btn-light{background:#FFF6EA;color:var(--espresso)}
+.btn-light:hover{transform:translateY(-2px)}
+.btn-outline-light{border-color:rgba(255,246,234,.35);color:#FFF6EA}
+.btn-outline-light:hover{border-color:#FFF6EA}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ---------- nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,247,242,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+nav{display:flex;align-items:center;gap:24px;height:64px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:1.05rem;letter-spacing:-.01em}
+.logo .mark{
+  width:28px;height:28px;border-radius:8px;background:var(--espresso);
+  display:grid;place-items:center;flex:none;
+}
+.logo .mark svg{width:16px;height:16px}
+.logo .sub{color:var(--muted);font-weight:500}
+.navlinks{display:none;gap:26px;margin-left:auto;font-size:.95rem}
+.navlinks a{text-decoration:none;color:var(--ink-soft);font-weight:500}
+.navlinks a:hover{color:var(--ink)}
+.nav-cta{margin-left:auto;padding:9px 18px;font-size:.92rem}
+@media(min-width:900px){
+  .navlinks{display:flex}
+  .nav-cta{margin-left:0}
+}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(44px,6vw,80px);padding-bottom:clamp(48px,7vw,88px)}
+.hero-grid{display:grid;gap:clamp(40px,6vw,64px);align-items:center}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+.hero h1 .hl{
+  background:linear-gradient(transparent 62%, var(--amber-soft) 62%);
+  padding-inline:2px;
+}
+.hero .lede{margin-top:22px}
+.trustline{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:.9rem;color:var(--muted)}
+.trustline span{display:flex;align-items:center;gap:7px}
+.tick{width:15px;height:15px;flex:none;color:var(--teal)}
+
+/* ---------- phone / card mock ---------- */
+.stage{position:relative;display:flex;justify-content:center}
+.phone{
+  width:min(300px,82vw);border-radius:38px;background:var(--ink);
+  padding:11px;box-shadow:0 32px 60px -28px rgba(26,19,16,.65), 0 0 0 1px rgba(26,19,16,.12);
+}
+.screen{
+  border-radius:29px;overflow:hidden;background:linear-gradient(170deg,#5A3A24,#241610 62%);
+  padding:20px 14px 22px;min-height:520px;display:flex;flex-direction:column;gap:14px;
+}
+.statusbar{display:flex;justify-content:space-between;color:rgba(255,246,234,.75);font-size:.72rem;font-weight:600;padding-inline:6px}
+.banner{
+  background:rgba(255,251,246,.94);border-radius:16px;padding:11px 13px;
+  display:flex;gap:10px;align-items:flex-start;
+  box-shadow:0 12px 26px -14px rgba(0,0,0,.7);
+  animation:drop .7s cubic-bezier(.2,.9,.3,1.3) both;
+}
+@keyframes drop{from{opacity:0;transform:translateY(-14px) scale(.96)}to{opacity:1;transform:none}}
+.banner .ic{width:26px;height:26px;border-radius:7px;background:var(--espresso);display:grid;place-items:center;flex:none}
+.banner .ic svg{width:14px;height:14px}
+.banner b{display:block;font-size:.78rem;letter-spacing:.01em}
+.banner p{font-size:.78rem;color:var(--ink-soft);line-height:1.35}
+.banner time{font-size:.68rem;color:var(--muted);margin-left:auto;flex:none}
+
+.ghosts{margin-top:auto;display:flex;flex-direction:column;align-items:center}
+.ghost{height:30px;border-radius:13px 13px 0 0;box-shadow:0 -6px 18px -10px rgba(0,0,0,.6)}
+.ghost.g1{width:74%;background:rgba(255,253,250,.3)}
+.ghost.g2{width:87%;background:rgba(255,253,250,.55);margin-top:-14px}
+.pass{
+  margin-top:-14px;background:#FFFDFA;border-radius:14px;overflow:hidden;
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.8);position:relative;
+}
+.pass-top{display:flex;align-items:center;gap:9px;padding:12px 13px 10px}
+.pass-logo{width:26px;height:26px;border-radius:7px;background:var(--espresso);display:grid;place-items:center;flex:none;color:#FFF6EA;font-size:.7rem;font-weight:700}
+.pass-top .name{font-size:.82rem;font-weight:600}
+.pass-top .bal{margin-left:auto;text-align:right}
+.pass-top .bal b{display:block;font-size:.95rem;font-family:Fraunces,serif}
+.pass-top .bal span{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.strip{background:linear-gradient(120deg,#4A2E1C,#2A1A12);padding:16px 13px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.stamp{width:26px;height:26px;border-radius:50%;border:1.5px dashed rgba(255,246,234,.35);display:grid;place-items:center}
+.stamp.on{background:var(--amber);border:1.5px solid var(--amber);color:#2A1A12}
+.stamp svg{width:13px;height:13px}
+.pass-foot{display:flex;padding:10px 13px 13px;gap:14px}
+.pass-foot div{flex:1}
+.pass-foot span{display:block;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pass-foot b{font-size:.78rem;font-weight:600}
+.floaty{
+  position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:9px 18px;font-size:.82rem;font-weight:600;white-space:nowrap;
+  box-shadow:0 14px 30px -16px rgba(26,19,16,.5);display:flex;align-items:center;gap:8px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--teal);flex:none;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ---------- generic blocks ---------- */
+.band-dark{background:var(--espresso);color:#FFF6EA}
+.band-dark h2,.band-dark h3{color:#FFF6EA}
+.band-dark .lede{color:rgba(255,246,234,.78)}
+.band-dark .eyebrow{color:var(--amber)}
+.band-paper{background:#F5EDE2}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:1fr}
+.g3{grid-template-columns:1fr}
+@media(min-width:700px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.g3{grid-template-columns:repeat(3,1fr)}}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;
+}
+.card h3{margin-bottom:9px}
+.card p{color:var(--ink-soft);font-size:.97rem}
+.icon{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:var(--amber-soft);color:var(--espresso);margin-bottom:16px;
+}
+.icon svg{width:19px;height:19px}
+.icon.teal{background:var(--teal-soft);color:var(--teal)}
+
+.step{display:flex;gap:18px;align-items:flex-start}
+.step .num{
+  width:36px;height:36px;flex:none;border-radius:50%;background:var(--espresso);color:#FFF6EA;
+  display:grid;place-items:center;font-weight:600;font-size:.95rem;font-family:Fraunces,serif;
+}
+.section-head{max-width:64ch;margin-bottom:clamp(32px,4vw,48px)}
+.section-head p{margin-top:14px}
+
+/* ---------- verticals ---------- */
+.vert{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;display:flex;flex-direction:column;gap:14px;
+}
+.vert .tag{
+  align-self:flex-start;font-size:.7rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  padding:5px 11px;border-radius:999px;background:var(--teal-soft);color:var(--teal);
+}
+.vert .tag.amber{background:var(--amber-soft);color:#9A5A18}
+.vert ul{margin:0;padding-left:19px;color:var(--ink-soft);font-size:.95rem}
+.vert li{margin-bottom:6px}
+.vert li::marker{color:var(--amber)}
+
+/* ---------- pricing ---------- */
+.prices{display:grid;gap:16px;grid-template-columns:1fr;align-items:stretch}
+@media(min-width:640px){.prices{grid-template-columns:1fr 1fr}}
+@media(min-width:1060px){.prices{grid-template-columns:repeat(4,1fr)}}
+.price{
+  position:relative;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 22px;display:flex;flex-direction:column;
+}
+.price.featured{border:2px solid var(--espresso);box-shadow:0 18px 40px -26px rgba(26,19,16,.7)}
+.price .plan{font-family:Fraunces,serif;font-size:1.22rem;font-weight:600}
+.price .amt{font-family:Fraunces,serif;font-size:2.25rem;font-weight:600;margin-top:12px;line-height:1}
+.price .amt small{font-size:.85rem;font-family:"Instrument Sans",sans-serif;color:var(--muted);font-weight:500}
+.price .yr{font-size:.83rem;color:var(--muted);margin-top:6px}
+.price .who{font-size:.92rem;color:var(--ink-soft);margin-top:14px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.price ul{list-style:none;margin:16px 0 22px;padding:0;font-size:.92rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:9px}
+.price li{display:flex;gap:9px;align-items:flex-start}
+.price li svg{width:15px;height:15px;flex:none;margin-top:4px;color:var(--teal)}
+.price .btn{margin-top:auto;justify-content:center}
+.badge{
+  position:absolute;top:-12px;left:22px;
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--amber);color:#2A1A12;padding:5px 11px;border-radius:999px;
+  box-shadow:0 4px 12px -4px rgba(26,19,16,.5);
+}
+.addons{margin-top:26px;border:1px dashed var(--line);border-radius:var(--radius);padding:24px;background:var(--card)}
+.addons h3{margin-bottom:6px}
+.addon-grid{display:grid;gap:18px;grid-template-columns:1fr;margin-top:18px}
+@media(min-width:760px){.addon-grid{grid-template-columns:repeat(3,1fr)}}
+.addon b{display:block;font-size:.98rem}
+.addon p{font-size:.9rem;color:var(--muted);margin-top:4px}
+
+/* ---------- case study ---------- */
+.case{display:grid;gap:clamp(30px,4vw,52px);align-items:center}
+@media(min-width:900px){.case{grid-template-columns:1.15fr .85fr}}
+.case .quoteblock{border-left:3px solid var(--amber);padding-left:20px;margin-top:22px}
+.case .quoteblock p{font-family:Fraunces,Georgia,serif;font-size:clamp(1.1rem,2vw,1.3rem);line-height:1.4}
+.case .quoteblock cite{display:block;margin-top:10px;font-style:normal;font-size:.88rem;color:var(--muted)}
+.wordmark{
+  display:inline-flex;align-items:center;gap:10px;font-family:Fraunces,Georgia,serif;
+  font-size:1.05rem;font-weight:600;letter-spacing:-.01em;
+}
+.wordmark .dot2{width:9px;height:9px;border-radius:50%;background:var(--amber);flex:none}
+.factcard{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;display:flex;flex-direction:column;gap:0;
+}
+.factcard .row{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line)}
+.factcard .row:last-child{border-bottom:0;padding-bottom:0}
+.factcard .row:first-child{padding-top:0}
+.factcard .k{font-size:.88rem;color:var(--muted)}
+.factcard .v{font-size:.92rem;font-weight:600;text-align:right}
+.livechip{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-size:.7rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  background:var(--teal-soft);color:var(--teal);padding:6px 12px;border-radius:999px;margin-bottom:16px;
+}
+
+/* ---------- demo band ---------- */
+.demo-grid{display:grid;gap:clamp(34px,5vw,56px);align-items:center}
+@media(min-width:900px){.demo-grid{grid-template-columns:1.1fr .9fr}}
+.tent{
+  background:#FFFDF8;color:var(--ink);border-radius:18px;padding:26px 24px 22px;
+  text-align:center;max-width:320px;margin-inline:auto;
+  box-shadow:0 34px 64px -30px rgba(0,0,0,.9);transform:rotate(-1.6deg);
+}
+.tent h3{font-size:1.24rem;color:var(--ink)}
+.band-dark .tent h3{color:var(--ink)}
+.tent .sub{font-size:.9rem;color:var(--muted);margin-top:6px}
+.tent .qr{width:min(180px,62%);margin:18px auto 0}
+.tent .qr svg{width:100%;height:auto;display:block}
+.tent .foot{
+  margin-top:16px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:#9A5A18;font-weight:700;
+}
+.tent .rule{height:1px;background:var(--line);margin:18px -24px 0}
+.tent .brandline{margin-top:14px;font-size:.72rem;color:var(--muted);letter-spacing:.05em}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;margin-inline:auto}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{
+  cursor:pointer;font-weight:600;font-size:1.02rem;list-style:none;
+  display:flex;justify-content:space-between;gap:16px;align-items:flex-start;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;line-height:1;color:var(--amber);flex:none;font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin-top:12px;color:var(--ink-soft);font-size:.97rem;max-width:70ch}
+
+/* ---------- final cta ---------- */
+.finale{text-align:center}
+.finale .lede{margin-inline:auto;margin-top:18px}
+.finale .btn-row{justify-content:center}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(255,246,234,.72);padding-block:44px;font-size:.92rem}
+.foot{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+.foot a{text-decoration:none;color:rgba(255,246,234,.72)}
+.foot a:hover{color:#FFF6EA}
+.footlinks{display:flex;flex-wrap:wrap;gap:20px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="/">
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFF6EA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3M20 14v3M14 20h3M20 20v1"/>
+          </svg>
+        </span>
+        <span>PassQR <span class="sub">Loyalty</span></span>
+      </a>
+      <div class="navlinks">
+        <a href="#how">How it works</a>
+        <a href="#business">Your business</a>
+        <a href="#why">Why it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="btn btn-primary nav-cta" data-demo href="https://demo.dasecure.com">See it live</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Wallet loyalty for local business</p>
+      <h1>The stamp card that's <span class="hl">already in their phone</span>.</h1>
+      <p class="lede">
+        PassQR puts your loyalty card into Apple Wallet and Google Wallet. Customers add it by
+        scanning the QR on your counter — no app to download, no signup, no email address.
+        Your staff scan to stamp, and the card updates on the customer's lock screen before
+        they've left the shop.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" data-demo href="https://demo.dasecure.com">
+          See it live — 5 questions, real card
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#pricing">See pricing</a>
+      </div>
+      <div class="trustline">
+        <span><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Free to try, no card required</span>
+        <span><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> iPhone and Android</span>
+        <span><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Live in an afternoon</span>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="phone">
+        <div class="screen">
+          <div class="statusbar"><span>9:41</span><span>▪▪▪ ◗</span></div>
+          <div class="banner">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#FFF6EA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div>
+              <b>Your café</b>
+              <p>Stamp 4 of 10 collected — 6 to go</p>
+            </div>
+            <time>now</time>
+          </div>
+          <div class="ghosts">
+            <div class="ghost g1"></div>
+            <div class="ghost g2"></div>
+          </div>
+          <div class="pass">
+            <div class="pass-top">
+              <span class="pass-logo">☕</span>
+              <span class="name">Rewards</span>
+              <span class="bal"><b>4/10</b><span>Stamps</span></span>
+            </div>
+            <div class="strip">
+              <span class="stamp on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span class="stamp on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span class="stamp on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span class="stamp on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>
+              <span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>
+            </div>
+            <div class="pass-foot">
+              <div><span>Reward</span><b>Free drink</b></div>
+              <div><span>Member since</span><b>Today</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="floaty"><span class="dot"></span> Updated ~3s after the scan</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROBLEM ================= -->
+<section class="band-paper">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why paper stops working</p>
+      <h2>A punch card only counts when it's in the room.</h2>
+      <p class="lede">
+        Card stock, a stamp, a drawer full of half-finished cards. It's cheap to start and
+        it quietly costs you every week.
+      </p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h10"/></svg></div>
+        <h3>It's at home, in a coat</h3>
+        <p>The visit happens, the stamp doesn't. Every forgotten card is a regular you never got to count.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></div>
+        <h3>You can't reach anyone</h3>
+        <p>A quiet Tuesday and no way to tell the people who already like you. Paper has no send button.</p>
+      </div>
+      <div class="card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+        <h3>You're guessing</h3>
+        <p>How many cards are live, who's close to a reward, which outlet actually stamps. Nobody knows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW ================= -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Three moving parts. That's the whole system.</h2>
+      <p class="lede">
+        No POS integration, no hardware to buy, nothing to install on anyone's phone.
+      </p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="step" style="margin-bottom:16px"><span class="num">1</span><h3 style="padding-top:6px">Put a QR on the counter</h3></div>
+        <p>You pick your colours, your logo, how many stamps and what the reward is. We generate one printed QR per shop. It takes minutes, and nothing about it is per-customer.</p>
+      </div>
+      <div class="card">
+        <div class="step" style="margin-bottom:16px"><span class="num">2</span><h3 style="padding-top:6px">They scan and tap once</h3></div>
+        <p>The camera opens a page in your colours. One tap and the card is in Apple Wallet or Google Wallet. No account, no form, no email — the pass itself is the identity.</p>
+      </div>
+      <div class="card">
+        <div class="step" style="margin-bottom:16px"><span class="num">3</span><h3 style="padding-top:6px">Staff scan to stamp</h3></div>
+        <p>Your counter phone or tablet opens the scanner in a browser and signs in once. Point it at the customer's card, and the stamp lands. Redeem is the same motion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VERTICALS ================= -->
+<section id="business" class="band-paper">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Built for your counter</p>
+      <h2>Two card shapes cover almost every local business.</h2>
+      <p class="lede">
+        A <strong>stamp-up</strong> card counts visits toward a reward. A <strong>punch-down</strong>
+        pack counts pre-paid sessions away. Everything below is one of those two, configured
+        differently.
+      </p>
+    </div>
+    <div class="grid g3">
+
+      <div class="vert">
+        <span class="tag amber">Stamp-up</span>
+        <h3>Cafés &amp; coffee shops</h3>
+        <p class="muted small">Buy nine, the tenth is on us — without the card stock.</p>
+        <ul>
+          <li>One stamp per transaction, with a cooldown so a single order can't be double-stamped</li>
+          <li>Reward banks automatically and shows as <em>Ready</em> on the card front</li>
+          <li>Morning-rush friendly: the scan is one motion at the till</li>
+        </ul>
+      </div>
+
+      <div class="vert">
+        <span class="tag amber">Stamp-up</span>
+        <h3>Salons &amp; barbers</h3>
+        <p class="muted small">Reward the sixth cut, and fill the chair on a slow week.</p>
+        <ul>
+          <li>Stamp on service, not on spend — one visit, one stamp</li>
+          <li>Send a message to every live card when you have gaps in the book</li>
+          <li>Card carries your brand on the lock screen between visits</li>
+        </ul>
+      </div>
+
+      <div class="vert">
+        <span class="tag">Membership</span>
+        <h3>Gyms</h3>
+        <p class="muted small">A member card that can't be left in the other bag.</p>
+        <ul>
+          <li>Check-in by scan instead of hunting a name on a screen</li>
+          <li>Every check-in is a timestamped event you can count by hour and by site</li>
+          <li>Multi-site ready — each location has its own counter login</li>
+        </ul>
+      </div>
+
+      <div class="vert">
+        <span class="tag">Punch-down</span>
+        <h3>Pilates, yoga &amp; dance studios</h3>
+        <p class="muted small">Class packs that count themselves down.</p>
+        <ul>
+          <li>Sell a 10-class pack; the card shows sessions remaining, not sessions collected</li>
+          <li>Front desk scans on entry — no spreadsheet, no paper register</li>
+          <li>Expiry windows supported, so a pack can't sit unused forever</li>
+        </ul>
+      </div>
+
+      <div class="vert">
+        <span class="tag amber">Stamp-up</span>
+        <h3>Farmers market stalls</h3>
+        <p class="muted small">No till, no power, patchy signal — still works.</p>
+        <ul>
+          <li>The scanner queues stamps offline and syncs when signal comes back</li>
+          <li>A queued stamp keeps the time it was <em>taken</em>, not the time it uploaded</li>
+          <li>One laminated QR on the stall is the entire setup</li>
+        </ul>
+      </div>
+
+      <div class="vert">
+        <span class="tag">Either</span>
+        <h3>Anything else with regulars</h3>
+        <p class="muted small">Bakeries, juice bars, nail studios, car washes, pet groomers, bottle shops.</p>
+        <ul>
+          <li>If you'd hand someone a card and a stamp, this replaces it</li>
+          <li>Set the number of stamps, the reward and the rules yourself</li>
+          <li>Not sure which shape fits? Walk the demo and it'll show you</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="btn-row" style="justify-content:center">
+      <a class="btn btn-primary" data-demo href="https://demo.dasecure.com">Try it on your own business</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE STUDY ================= -->
+<section id="case">
+  <div class="wrap case">
+    <div>
+      <span class="livechip"><span class="dot"></span> Live now</span>
+      <p class="wordmark"><span class="dot2"></span> Golden Coast Broth</p>
+      <h2 style="margin-top:14px">A stamp card that survives a farmers market.</h2>
+      <p class="lede" style="margin-top:18px">
+        Golden Coast Broth sells bone broth from stalls at three San Diego markets —
+        Little Italy Mercato, Solana Beach and La Mesa. No till, no counter, no
+        reliable signal, and a different crowd at each one. Everything a loyalty app
+        usually needs, they don't have.
+      </p>
+      <p class="lede" style="margin-top:16px">
+        Their card is eight stamps for a free 16&nbsp;oz jar. Customers add it from a
+        printed QR on the table — no app, nothing typed — and stamps queue on the
+        stall phone when the signal drops, then land dated to the market day they
+        happened on. Because stamps carry across all three stalls, a Solana Beach
+        regular who turns up in La Mesa is still on the same card.
+      </p>
+    </div>
+
+    <div class="factcard">
+      <div class="row"><span class="k">Business</span><span class="v">Bone broth, farmers market stalls</span></div>
+      <div class="row"><span class="k">Card shape</span><span class="v">Stamp-up</span></div>
+      <div class="row"><span class="k">Reward</span><span class="v">8 stamps → free 16 oz jar</span></div>
+      <div class="row"><span class="k">Markets</span><span class="v">Little Italy Mercato<br>Solana Beach · La Mesa</span></div>
+      <div class="row"><span class="k">Wallets</span><span class="v">Apple + Google, both live</span></div>
+      <div class="row"><span class="k">Arrival alerts</span><span class="v">Geofenced per market</span></div>
+      <div class="row"><span class="k">Hardware bought</span><span class="v">None</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why it actually gets used</p>
+      <h2>Most loyalty apps die at the signup screen.</h2>
+      <p class="lede">
+        Every field you ask for at a counter with a queue behind it costs you enrolments.
+        So we don't ask for any.
+      </p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z"/></svg></div>
+        <h3>Anonymous by design</h3>
+        <p>No account, no email, no app. The pass is the identity. The honest trade-off: lose the phone, lose the stamps — and we say so on the join page rather than hiding it.</p>
+      </div>
+      <div class="card">
+        <div class="icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg></div>
+        <h3>It shows up on the lock screen</h3>
+        <p>A scan updates the card in the customer's wallet in a few seconds, and the update surfaces as a notification. Your brand lands on their phone at the moment they liked you most.</p>
+      </div>
+      <div class="card">
+        <div class="icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H4z"/><path d="M8 20h8M12 16v4"/><path d="M2 9h4"/></svg></div>
+        <h3>The scanner is just a browser</h3>
+        <p>Any phone or tablet you already own. Sign in once per counter and leave it on the till. No app store, no device management, no extra hardware bill.</p>
+      </div>
+      <div class="card">
+        <div class="icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></div>
+        <h3>Offline, then honest</h3>
+        <p>Signal drops and the scanner keeps working. Stamps queue on the device and replay when it's back — dated when they were taken, and never double-counted if a scan is repeated.</p>
+      </div>
+      <div class="card">
+        <div class="icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-8-8 18-2-8-8-2Z"/></svg></div>
+        <h3>You can reach every card</h3>
+        <p>Broadcast a message to everyone holding your card — a slow Tuesday, a new roast, a class opening. It lands on the card itself, not in a spam folder.</p>
+      </div>
+      <div class="card">
+        <div class="icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a7 7 0 1 1 14 0c0 5.5-7 10-7 10Z"/><circle cx="12" cy="11" r="2.5"/></svg></div>
+        <h3>Proximity, when you want it</h3>
+        <p>Optional add-ons surface the card automatically when a customer arrives — a geofence around the shop, or a small beacon on the counter. Off by default; nothing to configure until you want it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEMO BAND ================= -->
+<section class="band-dark">
+  <div class="wrap demo-grid">
+    <div class="section-head" style="margin-bottom:0">
+      <p class="eyebrow">The demo is the pitch</p>
+      <h2>Answer five questions. Your shop already exists.</h2>
+      <p class="lede">
+        The demo doesn't play you a video. It provisions a real loyalty programme in your
+        business's name while you're still answering questions, mints a real card into your
+        wallet, stamps it, and pushes the update to your phone. Nothing is faked, and there's
+        no loading screen — because there's nothing to load.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-light" data-demo href="https://demo.dasecure.com">
+          Start the demo
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-outline-light" href="#pricing">Or skip to pricing</a>
+      </div>
+      <p class="small" style="margin-top:20px;color:rgba(255,246,234,.55)">
+        Takes about twenty minutes end to end. Keep the shop it builds you, or walk away — your call at the end.
+      </p>
+    </div>
+
+    <div class="tent">
+      <h3>Scan to see it</h3>
+      <p class="sub">Point your phone's camera here — the same motion your customers will make at your counter.</p>
+      <div class="qr">
+        <svg viewBox="0 0 29 29" role="img" aria-label="QR code linking to demo.dasecure.com">
+          <rect width="29" height="29" fill="#FFFDF8"/>
+          <path fill="#1A1310" d="M0 0h7v1h-7zM8 0h2v1h-2zM12 0h3v1h-3zM16 0h1v1h-1zM18 0h1v1h-1zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM10 1h6v1h-6zM17 1h4v1h-4zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM10 2h3v1h-3zM14 2h1v1h-1zM17 2h4v1h-4zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h1v1h-1zM10 3h2v1h-2zM18 3h2v1h-2zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h2v1h-2zM11 4h1v1h-1zM17 4h2v1h-2zM20 4h1v1h-1zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM16 5h2v1h-2zM19 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM8 7h1v1h-1zM11 7h1v1h-1zM13 7h1v1h-1zM15 7h4v1h-4zM20 7h1v1h-1zM0 8h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM13 8h1v1h-1zM17 8h1v1h-1zM19 8h7v1h-7zM28 8h1v1h-1zM2 9h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM13 9h2v1h-2zM16 9h3v1h-3zM22 9h1v1h-1zM24 9h5v1h-5zM1 10h1v1h-1zM3 10h1v1h-1zM5 10h2v1h-2zM9 10h1v1h-1zM16 10h3v1h-3zM24 10h1v1h-1zM28 10h1v1h-1zM3 11h2v1h-2zM8 11h2v1h-2zM14 11h1v1h-1zM17 11h3v1h-3zM21 11h1v1h-1zM24 11h2v1h-2zM27 11h2v1h-2zM0 12h3v1h-3zM4 12h5v1h-5zM10 12h1v1h-1zM13 12h4v1h-4zM18 12h2v1h-2zM21 12h1v1h-1zM27 12h1v1h-1zM0 13h1v1h-1zM3 13h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM17 13h2v1h-2zM22 13h7v1h-7zM6 14h3v1h-3zM10 14h6v1h-6zM18 14h1v1h-1zM20 14h1v1h-1zM22 14h1v1h-1zM25 14h2v1h-2zM28 14h1v1h-1zM4 15h1v1h-1zM8 15h1v1h-1zM11 15h1v1h-1zM13 15h1v1h-1zM15 15h2v1h-2zM20 15h3v1h-3zM24 15h1v1h-1zM27 15h2v1h-2zM0 16h1v1h-1zM2 16h2v1h-2zM5 16h2v1h-2zM9 16h3v1h-3zM13 16h1v1h-1zM19 16h1v1h-1zM21 16h1v1h-1zM27 16h1v1h-1zM0 17h1v1h-1zM3 17h1v1h-1zM7 17h8v1h-8zM16 17h1v1h-1zM18 17h1v1h-1zM22 17h4v1h-4zM27 17h2v1h-2zM2 18h3v1h-3zM6 18h1v1h-1zM16 18h2v1h-2zM20 18h3v1h-3zM26 18h1v1h-1zM28 18h1v1h-1zM5 19h1v1h-1zM8 19h2v1h-2zM11 19h2v1h-2zM14 19h1v1h-1zM17 19h3v1h-3zM22 19h1v1h-1zM27 19h2v1h-2zM0 20h4v1h-4zM6 20h1v1h-1zM8 20h1v1h-1zM10 20h2v1h-2zM13 20h4v1h-4zM18 20h8v1h-8zM28 20h1v1h-1zM8 21h1v1h-1zM10 21h3v1h-3zM17 21h1v1h-1zM19 21h2v1h-2zM24 21h1v1h-1zM28 21h1v1h-1zM0 22h7v1h-7zM8 22h1v1h-1zM13 22h3v1h-3zM18 22h3v1h-3zM22 22h1v1h-1zM24 22h3v1h-3zM28 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM9 23h1v1h-1zM11 23h1v1h-1zM13 23h1v1h-1zM15 23h2v1h-2zM19 23h2v1h-2zM24 23h1v1h-1zM28 23h1v1h-1zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM8 24h4v1h-4zM13 24h1v1h-1zM19 24h7v1h-7zM28 24h1v1h-1zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM9 25h2v1h-2zM14 25h1v1h-1zM16 25h1v1h-1zM18 25h1v1h-1zM20 25h2v1h-2zM27 25h1v1h-1zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM9 26h1v1h-1zM11 26h4v1h-4zM16 26h2v1h-2zM19 26h1v1h-1zM25 26h4v1h-4zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h1v1h-1zM11 27h4v1h-4zM17 27h2v1h-2zM20 27h4v1h-4zM25 27h1v1h-1zM27 27h2v1h-2zM0 28h7v1h-7zM8 28h2v1h-2zM11 28h6v1h-6zM18 28h1v1h-1zM20 28h6v1h-6zM27 28h1v1h-1z"/>
+        </svg>
+      </div>
+      <p class="foot">demo.dasecure.com</p>
+      <div class="rule"></div>
+      <p class="brandline">This is what a counter card looks like</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Pricing</p>
+      <h2>Priced on shops, not on customers.</h2>
+      <p class="lede">
+        Growing your card base shouldn't raise your bill. Every paid plan includes wallet
+        cards, the scanner, stamp and reward push, and broadcasts. USD, billed monthly or
+        yearly — two months free on yearly.
+      </p>
+    </div>
+
+    <div class="prices">
+      <div class="price">
+        <div class="plan">Trial</div>
+        <div class="amt">Free<small></small></div>
+        <div class="yr">No card required</div>
+        <p class="who">See the whole thing working before you commit.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1 shop, 1 staff login</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Up to 50 cards</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Wallet push updates</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Geofence + beacon unlocked to try</li>
+        </ul>
+        <a class="btn btn-ghost" data-demo href="https://demo.dasecure.com">Start free</a>
+      </div>
+
+      <div class="price">
+        <div class="plan">Solo</div>
+        <div class="amt">$29<small>/mo</small></div>
+        <div class="yr">or $290/year</div>
+        <p class="who">One shop, one counter, running for real.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 1 shop, 3 staff logins</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 2,000 new cards a month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 4 broadcasts a month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 90 days of history</li>
+        </ul>
+        <a class="btn btn-ghost" data-demo href="https://demo.dasecure.com">Start free</a>
+      </div>
+
+      <div class="price featured">
+        <span class="badge">Most shops</span>
+        <div class="plan">Growth</div>
+        <div class="amt">$79<small>/mo</small></div>
+        <div class="yr">or $790/year</div>
+        <p class="who">A few locations, a real campaign rhythm.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Up to 3 shops, 10 staff logins</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 6,000 new cards a month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 8 broadcasts a month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> A year of history, per-outlet reporting</li>
+        </ul>
+        <a class="btn btn-primary" data-demo href="https://demo.dasecure.com">Start free</a>
+      </div>
+
+      <div class="price">
+        <div class="plan">Chain</div>
+        <div class="amt">$199<small>/mo</small></div>
+        <div class="yr">or $1,990/year</div>
+        <p class="who">Ten sites, more than one programme, your own branding.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Up to 10 shops, 30 staff logins</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 3 loyalty programmes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> 20,000 new cards a month</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Your own wallet certificate</li>
+        </ul>
+        <a class="btn btn-ghost" data-demo href="https://demo.dasecure.com">Start free</a>
+      </div>
+    </div>
+
+    <div class="addons">
+      <h3>Add-ons and larger groups</h3>
+      <p class="muted small">Optional, and never required to run a loyalty programme.</p>
+      <div class="addon-grid">
+        <div class="addon">
+          <b>Geofence arrival</b>
+          <p>The card surfaces on the lock screen when a customer is near the shop.</p>
+        </div>
+        <div class="addon">
+          <b>Counter beacon</b>
+          <p>A small device on the counter that wakes the card as they walk in. One-time hardware cost.</p>
+        </div>
+        <div class="addon">
+          <b>25+ outlets</b>
+          <p>Group plans, more programmes and longer history. <a href="mailto:hello@dasecure.com?subject=PassQR%20Loyalty%20—%20group%20plan" style="color:var(--teal);font-weight:600">Talk to us</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="band-paper">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;margin-inline:auto">
+      <p class="eyebrow">Questions</p>
+      <h2>The things owners actually ask.</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Do my customers have to download an app?</summary>
+        <p>No. The card goes into Apple Wallet or Google Wallet, which are already on the phone. They scan the QR on your counter, tap once, and it's saved. There is nothing to install and nothing to sign up for.</p>
+      </details>
+      <details>
+        <summary>Does it work on both iPhone and Android?</summary>
+        <p>Yes. The join page detects the phone and hands an Apple Wallet pass to iPhone and a Google Wallet pass to Android. Your staff don't need to know which is which.</p>
+      </details>
+      <details>
+        <summary>What do we scan with at the counter?</summary>
+        <p>Any phone or tablet with a camera and a browser. The scanner runs at scan.passqr.com — you sign in once per counter and leave it open. There is no app store step and no hardware to buy.</p>
+      </details>
+      <details>
+        <summary>What happens when the wifi drops?</summary>
+        <p>The scanner keeps taking stamps and queues them on the device. When signal returns they replay, dated at the moment they were actually taken rather than the moment they uploaded — so a customer who bought a coffee at 9am doesn't get a 9:40am stamp. Repeated scans of the same event are ignored rather than double-counted.</p>
+      </details>
+      <details>
+        <summary>Do we have to collect email addresses?</summary>
+        <p>No, and by default you don't. The pass itself is the customer's identity, which is what makes enrolment a single tap. The honest cost: if a customer loses their phone, their stamps go with it, and you can't email people who only ever gave you a scan. If you'd rather build a mailing list, there's an optional claim link on the back of the card.</p>
+      </details>
+      <details>
+        <summary>Can we send a message to everyone holding a card?</summary>
+        <p>Yes. A broadcast writes to every live card and surfaces as a notification. Your plan sets how many you can send a month — enough to be useful, capped so the channel doesn't get burned out.</p>
+      </details>
+      <details>
+        <summary>We have more than one location. Does that work?</summary>
+        <p>Yes. Each shop gets its own counter login and its own printed QR, and every stamp is recorded against the outlet it happened at. Stamps earned at one site count on the same card at another, unless you'd rather they didn't.</p>
+      </details>
+      <details>
+        <summary>How long does setup take?</summary>
+        <p>Minutes for the card itself — your colours, your logo, the number of stamps and the reward. The demo does exactly that setup live, and you can keep what it builds you.</p>
+      </details>
+      <details>
+        <summary>Does it plug into my POS?</summary>
+        <p>It doesn't need to. Stamping is a separate scan at the counter, which is why it works for a market stall with no till as readily as for a café with one. If you want it wired to your point of sale, there's an API — tell us what you're running.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="band-dark finale">
+  <div class="wrap">
+    <h2>Your card could be on a phone this afternoon.</h2>
+    <p class="lede">
+      Five questions, a real programme in your business's name, and a card you can hold in
+      your own wallet by the end of it.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-light" data-demo href="https://demo.dasecure.com">
+        See it live
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-outline-light" href="mailto:hello@dasecure.com?subject=PassQR%20Loyalty">Email us instead</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="logo" href="/" style="color:#FFF6EA">
+        <span class="mark" style="background:#FFF6EA">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1A1310" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3M20 14v3M14 20h3M20 20v1"/>
+          </svg>
+        </span>
+        <span>PassQR <span style="color:rgba(255,246,234,.55);font-weight:500">Loyalty</span></span>
+      </a>
+      <p class="small" style="margin-top:10px;color:rgba(255,246,234,.5)">A DaSecure product. Wallet passes for local business.</p>
+    </div>
+    <div class="footlinks">
+      <a href="https://passqr.com">PassQR</a>
+      <a href="https://dasecure.com">DaSecure</a>
+      <a data-demo href="https://demo.dasecure.com">Demo</a>
+      <a href="mailto:hello@dasecure.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Single source of truth for the demo destination. Change this one line to
+     repoint every CTA on the page (add a query string here if the demo grows one). */
+  var DEMO_URL = "https://demo.dasecure.com";
+  document.querySelectorAll("[data-demo]").forEach(function (a) { a.href = DEMO_URL; });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "PassQR Loyalty",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "url": "https://loyalty.passqr.com/",
+      "description": "Wallet loyalty cards for cafés, salons, gyms, pilates studios and market stalls. Customers add the card from a QR on the counter with no app and no signup; staff scan to stamp and the card updates in Apple Wallet and Google Wallet.",
+      "publisher": { "@type": "Organization", "name": "DaSecure", "url": "https://dasecure.com" },
+      "offers": [
+        { "@type": "Offer", "name": "Trial", "price": "0", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Solo", "price": "29", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Growth", "price": "79", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Chain", "price": "199", "priceCurrency": "USD" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Do my customers have to download an app?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The card goes into Apple Wallet or Google Wallet, which are already on the phone. Customers scan the QR on your counter and tap once to save it." } },
+        { "@type": "Question", "name": "Does it work on both iPhone and Android?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The join page detects the phone and issues an Apple Wallet pass to iPhone and a Google Wallet pass to Android." } },
+        { "@type": "Question", "name": "What do we scan with at the counter?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Any phone or tablet with a camera and a browser. The scanner runs at scan.passqr.com; you sign in once per counter." } },
+        { "@type": "Question", "name": "What happens when the wifi drops?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The scanner queues stamps on the device and replays them when signal returns, dated at the time they were taken. Repeated scans of the same event are not double-counted." } },
+        { "@type": "Question", "name": "Do we have to collect email addresses?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. The pass itself is the customer's identity, which is what makes enrolment a single tap. An optional claim link on the back of the card can collect an address if you want a mailing list." } },
+        { "@type": "Question", "name": "How long does setup take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Minutes for the card itself — your colours, your logo, the number of stamps and the reward." } }
+      ]
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
