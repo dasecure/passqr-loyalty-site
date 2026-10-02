@@ -130,6 +130,20 @@ nav{display:flex;align-items:center;gap:24px;height:64px}
 
 /* ---------- phone / card mock ---------- */
 .stage{position:relative;display:flex;justify-content:center}
+/* hero video (portrait launch film, HLS) */
+.hv{position:relative;width:min(340px,82vw);aspect-ratio:9/16;border-radius:30px;overflow:hidden;
+  border:1px solid var(--line);background:var(--paper) url(/media/launch/v1/poster.webp) center/cover no-repeat;
+  box-shadow:0 32px 60px -28px rgba(26,19,16,.55)}
+.hv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent;opacity:0;transition:opacity .35s ease}
+.hv video.on{opacity:1}
+.hv video::cue{font:600 14px/1.35 "Instrument Sans",system-ui,sans-serif;background:rgba(42,26,18,.82);color:#FFF6EA}
+.hv-snd{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border:0;border-radius:999px;background:var(--espresso);color:#FFF6EA;font:600 .86rem/1 "Instrument Sans",sans-serif;
+  cursor:pointer;white-space:nowrap;box-shadow:0 10px 24px -12px rgba(26,19,16,.7)}
+.hv-snd svg{width:16px;height:16px}
+.hv-snd:hover{background:#4a2e1c}
+.hv-snd:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.hv-snd[hidden]{display:none}
 .phone{
   width:min(300px,82vw);border-radius:38px;background:var(--ink);
   padding:11px;box-shadow:0 32px 60px -28px rgba(26,19,16,.65), 0 0 0 1px rgba(26,19,16,.12);
@@ -387,43 +401,12 @@ footer{background:var(--ink);color:rgba(255,246,234,.72);padding-block:44px;font
     </div>
 
     <div class="stage">
-      <div class="phone">
-        <div class="screen">
-          <div class="statusbar"><span>9:41</span><span>▪▪▪ ◗</span></div>
-          <div class="banner">
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#FFF6EA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <div>
-              <b>Your café</b>
-              <p>Stamp 4 of 10 collected — 6 to go</p>
-            </div>
-            <time>now</time>
-          </div>
-          <div class="ghosts">
-            <div class="ghost g1"></div>
-            <div class="ghost g2"></div>
-          </div>
-          <div class="pass">
-            <div class="pass-top">
-              <span class="pass-logo">☕</span>
-              <span class="name">Rewards</span>
-              <span class="bal"><b>4/10</b><span>Stamps</span></span>
-            </div>
-            <div class="strip">
-              <span class="stamp on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="stamp on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="stamp on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="stamp on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-              <span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>
-              <span class="stamp"></span><span class="stamp"></span><span class="stamp"></span>
-            </div>
-            <div class="pass-foot">
-              <div><span>Reward</span><b>Free drink</b></div>
-              <div><span>Member since</span><b>Today</b></div>
-            </div>
-          </div>
-        </div>
+      <div class="hv" id="hv">
+        <video id="hvv" muted loop playsinline preload="metadata" poster="/media/launch/v1/poster.webp" aria-label="PassQR Loyalty in 45 seconds: a customer scans the counter QR, the card lands in their wallet, staff stamp it and the lock screen updates in about three seconds">
+          <track kind="captions" src="/media/launch/v1/captions.en.vtt" srclang="en" label="English">
+        </video>
+        <button class="hv-snd" id="hvs" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>Play with sound</button>
       </div>
-      <div class="floaty"><span class="dot"></span> Updated ~3s after the scan</div>
     </div>
   </div>
 </section>
@@ -929,5 +912,21 @@ footer{background:var(--ink);color:rgba(255,246,234,.72);padding-block:44px;font
 }
 </script>
 
+<script>/* hero video: native HLS on Safari/iOS, hls.js light elsewhere, MP4 fallback */
+(function(){
+var v=document.getElementById("hvv"),b=document.getElementById("hvs");if(!v)return;var M="/media/launch/v1/";
+var quiet=(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)||(navigator.connection&&navigator.connection.saveData);
+function go(){if(quiet)return;var p=v.play();if(p&&p.catch)p.catch(function(){if(document.visibilityState!=="visible")document.addEventListener("visibilitychange",function f(){if(document.visibilityState==="visible"){document.removeEventListener("visibilitychange",f);go()}})})}
+v.addEventListener("playing",function(){v.classList.add("on")});
+function mp4(){v.src=M+"launch-720p.mp4";go()}
+if(v.canPlayType("application/vnd.apple.mpegurl")){v.src=M+"master.m3u8";go()}
+else{var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.light.min.js";s.async=true;
+s.onload=function(){if(!(window.Hls&&Hls.isSupported()))return mp4();
+var h=new Hls({capLevelToPlayerSize:true,startLevel:-1,maxBufferLength:15});
+h.on(Hls.Events.MANIFEST_PARSED,go);h.on(Hls.Events.ERROR,function(e,d){if(d.fatal){h.destroy();mp4()}});
+h.loadSource(M+"master.m3u8");h.attachMedia(v)};
+s.onerror=mp4;document.head.appendChild(s)}
+b.addEventListener("click",function(){v.muted=false;v.controls=true;b.hidden=true;try{v.currentTime=0}catch(e){}v.classList.add("on");var p=v.play();if(p&&p.catch)p.catch(function(){})});
+})();</script>
 </body>
 </html>

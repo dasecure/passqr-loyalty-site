@@ -15,6 +15,7 @@ Static, no framework. `index.html` is the whole site; everything else is assets.
 | `favicon.svg`, `apple-touch-icon.png` | Icons |
 | `robots.txt`, `sitemap.xml` | Indexing |
 | `_headers` | Cloudflare Pages response headers |
+| `media/launch/v<N>/` | Hero video: HLS ladder (1080p/720p/480p), poster, captions, 720p MP4 fallback. Immutable-cached — re-cut into `v<N+1>` and update the paths in `index.html` |
 | `tools/make-images.py` | Regenerates `og.png` and `apple-touch-icon.png` |
 
 ## Deploy
@@ -27,7 +28,7 @@ The "build" is a copy step that stages only the public files, so `tools/` and
 `README.md` are never served:
 
 ```
-mkdir -p _site && cp index.html 404.html og.png favicon.svg apple-touch-icon.png robots.txt sitemap.xml _headers _site/
+mkdir -p _site && cp index.html 404.html og.png favicon.svg apple-touch-icon.png robots.txt sitemap.xml _headers _site/ && cp -R media _site/
 ```
 
 Output directory is `_site`. **If you add a public file, add it to that command**
